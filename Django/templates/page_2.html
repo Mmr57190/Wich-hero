@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="{% static '/css/style.css' %}" rel="stylesheet" id="style">
+    <!------ Include the above in your HEAD tag ---------->
+    <style>
+      .bg-image {
+        background-image: url("{% static '/img/bg.jpg'%}");
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
+      }
+    </style>
+    <title>Which hero are you ?</title>
+  </head>
+  <body>
+    <div class="bg-image">
+      <div class="container">
+      <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+              <h3 class="text-center"> Question 1 </h3>
+              <h4>Décrivez votre style de leadership :</h4>
+          </div>
+          <div class="modal-body">
+              <div class="col-xs-3 col-xs-offset-5">
+                 <div id="loadbar" style="display: none;">
+                    <div class="blockG" id="rotateG_01"></div>
+                    <div class="blockG" id="rotateG_02"></div>
+                    <div class="blockG" id="rotateG_03"></div>
+                    <div class="blockG" id="rotateG_04"></div>
+                    <div class="blockG" id="rotateG_05"></div>
+                    <div class="blockG" id="rotateG_06"></div>
+                    <div class="blockG" id="rotateG_07"></div>
+                    <div class="blockG" id="rotateG_08"></div>
+                </div>
+            </div>
+            <div class="quiz" id="quiz" data-toggle="buttons">
+            <form action="{% url 'process_answer' 11 %}" method="post">
+              {% csrf_token %}
+              <label class="element-animation1 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input type="submit" name="q_answer" style="display: none;">A. Directif et autoritaire</label> 
+            </form>
+            <form action="{% url 'process_answer' 12 %}" method="post">
+              {% csrf_token %}
+            <label class="element-animation2 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input type="submit" name="q_answer" style="display: none;">B. Collaboratif et participatif</label> 
+            </form>
+            <form action="{% url 'process_answer' 13 %}" method="post">
+              {% csrf_token %}
+            <label class="element-animation3 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input type="submit" name="q_answer" style="display: none;">C. Visionnaire et inspirant</label> 
+            </form>
+            <form action="{% url 'process_answer' 14 %}" method="post">
+              {% csrf_token %}
+            <label class="element-animation4 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input type="submit" name="q_answer" style="display: none;">D. Déléguant et confiant</label>
+            </form>
+            <form action="{% url 'process_answer' 15 %}" method="post">
+              {% csrf_token %}
+              <label class="element-animation4 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input type="submit" name="q_answer" style="display: none;">E. Souple et adaptable</label> 
+            </form>
+            </div>
+     </div>
+     <div class="modal-footer text-muted">
+      <span id="answer"></span>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </body>
+</html>
